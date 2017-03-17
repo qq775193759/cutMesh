@@ -18,7 +18,7 @@ typedef TriMesh_ArrayKernelT<>  MyMesh;
 #include "voxelizer.h"
 
 
-enum VAO_IDs { Triangles, NumVAOs };
+enum VAO_IDs { Triangles, Voxels, NumVAOs };
 enum Buffer_IDs { ArrayBuffer, VoxelBuffer, NumBuffers };
 enum Attrib_IDs { vPosition = 0 , vPosition2 = 1};
 GLuint VAOs[NumVAOs];
@@ -45,9 +45,10 @@ vector<GLfloat> voxel_triangle_v3;
 RotateController *rotCtl;
 
 vx_mesh_t* origin_mesh;
+vx_mesh_t* rotate_mesh;
 vx_mesh_t* voxel_mesh;
-float voxel_size = 0.01;
-float voxel_precision = 0.001;
+float voxel_size = 0.1;
+float voxel_precision = 0.01;
 
 void MyMesh2vx_mesh_t(MyMesh mesh, vx_mesh_t* &x)
 {
@@ -71,7 +72,11 @@ void MyMesh2vx_mesh_t(MyMesh mesh, vx_mesh_t* &x)
 
 void voxelize_for_show()
 {
-	voxel_mesh = vx_voxelize(origin_mesh, voxel_size, voxel_size, voxel_size, voxel_precision);
+	cout<<"Voxelize begin:"<<endl;
+	if(voxel_mesh) vx_mesh_free(voxel_mesh);//if it have ever been voxelized
+	voxel_mesh = vx_voxelize(rotate_mesh, voxel_size, voxel_size, voxel_size, voxel_precision);
+	cout<<"Voxelize end:"<<endl;
+	voxel_triangle_v3.clear();
 	for(int i=0;i<voxel_mesh->nindices;i++)
 	{
 		voxel_triangle_v3.push_back(voxel_mesh->vertices[voxel_mesh->indices[i]].x);
@@ -102,8 +107,30 @@ void read_point()
 	}
 	cout<<"In total, Edges: "<<edges_v2.size()/6<<endl;
 	MyMesh2vx_mesh_t(mesh, origin_mesh);
-	cout<<origin_mesh<<endl;
+	MyMesh2vx_mesh_t(mesh, rotate_mesh);
 	voxelize_for_show();
+}
+
+vx_vertex_t cal_rotate_vertex(vx_vertex_t origin)
+{
+	vx_vertex_t res;
+	for(int i=0;i<3;i++)
+		res.v[i] = origin.x*rotateMatrix[i] + origin.y*rotateMatrix[4+i] + origin.z*rotateMatrix[8+i] + rotateMatrix[12+i];
+	return res;
+}
+
+void cal_rotate_mesh()
+{
+	for(int i=0;i<origin_mesh->nvertices;i++)
+		rotate_mesh->vertices[i] = cal_rotate_vertex(rotate_mesh->vertices[i]);
+}
+
+void revoxelize()
+{
+	cal_rotate_mesh();
+	voxelize_for_show();
+	glBindVertexArray(VAOs[Voxels]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * voxel_triangle_v3.size(), &voxel_triangle_v3[0], GL_STATIC_DRAW);
 }
 
 
@@ -120,20 +147,20 @@ void updateWindowMatrix()
 void init(void) 
 {
 	glGenVertexArrays(NumVAOs, VAOs); 
-	glBindVertexArray(VAOs[Triangles]);
+	glGenBuffers(NumBuffers, Buffers);
 	read_point();
 
-	glGenBuffers(NumBuffers, Buffers);
-
+	glBindVertexArray(VAOs[Triangles]);
 	glBindBuffer(GL_ARRAY_BUFFER, Buffers[ArrayBuffer]); 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * edges_v2.size(), &edges_v2[0], GL_STATIC_DRAW);
 	glVertexAttribPointer(vPosition, VERT_DIM, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0)); 
 	glEnableVertexAttribArray(vPosition);
 
-	//glBindBuffer(GL_ARRAY_BUFFER, Buffers[VoxelBuffer]); 
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * voxel_triangle_v3.size(), &voxel_triangle_v3[0], GL_STATIC_DRAW);
-	//glVertexAttribPointer(vPosition, VERT_DIM, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0)); 
-	//glEnableVertexAttribArray(vPosition);
+	glBindVertexArray(VAOs[Voxels]);
+	glBindBuffer(GL_ARRAY_BUFFER, Buffers[VoxelBuffer]); 
+	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * voxel_triangle_v3.size(), &voxel_triangle_v3[0], GL_STATIC_DRAW);
+	glVertexAttribPointer(vPosition, VERT_DIM, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0)); 
+	glEnableVertexAttribArray(vPosition);
 
 	//load shader
 	ShaderInfo shaders[] = { { GL_VERTEX_SHADER, "triangles.vert" }, { GL_FRAGMENT_SHADER, "triangles.frag" }, { GL_NONE, NULL } };
@@ -145,12 +172,11 @@ void init(void)
 	//projectMatrixLoc = glGetUniformLocation(program, "projectMatrix");
 	windowMatrixLoc = glGetUniformLocation(program, "windowMatrix");
 	paintModeLoc = glGetUniformLocation(program, "paintMode");
-	glUniformMatrix4fv(rotateMatrixLoc, 1, GL_FALSE, rotateMatrix);
 	//initProjectMatrix();
 	//glUniformMatrix4fv(projectMatrixLoc, 1, GL_FALSE, projectMatrix);//no use
 
 	glPointSize(6.0f);
-	glLineWidth(1.5f);
+	glLineWidth(1.0f);
 	
 	rotCtl = new RotateController(rotateMatrix);
 }
@@ -163,6 +189,9 @@ void display(void)
 	glBindVertexArray(VAOs[Triangles]); 
 	glUniform1i(paintModeLoc, 0);
 	glDrawArrays(GL_LINES, 0, edges_v2.size());
+	glBindVertexArray(VAOs[Voxels]);
+	glUniform1i(paintModeLoc, 1);
+	glDrawArrays(GL_LINES, 0, voxel_triangle_v3.size());
 	glFlush();
 }
 
@@ -183,6 +212,9 @@ void keyboardFunc(unsigned char key, int x, int y)
 	cout<<key<<endl;
 	switch (key)
 	{
+	case ' ':
+		revoxelize();
+		break;
 	case 'a':
 		rotCtl->doRot(Vector3D(1.0,0.0,0.0), 0.1);
 		break;

@@ -8,9 +8,8 @@ uniform int paintMode;
 void 
 main() 
 { 
-	if(paintMode ==0)
+	//if(paintMode ==0)
 		gl_Position = windowMatrix * rotateMatrix * vPosition ;
-	else
-		gl_Position = windowMatrix * vPosition;
-	//gl_Position = vPosition;
+	//else
+	//	gl_Position = windowMatrix * vPosition;
 }

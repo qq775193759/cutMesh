@@ -139,6 +139,7 @@ vx_mesh_t* vx_mesh_alloc(int nindices, int nvertices);
 #define VOXELIZER_EPSILON               (0.0000001)
 #define VOXELIZER_NORMAL_INDICES_SIZE   (6)
 #define VOXELIZER_INDICES_SIZE          (36)
+#define MY_VOXELIZER_INDICES_SIZE          (24)
 #define VOXELIZER_HASH_TABLE_SIZE       (4096)
 
 unsigned int vx_voxel_indices[VOXELIZER_INDICES_SIZE] = {
@@ -154,6 +155,21 @@ unsigned int vx_voxel_indices[VOXELIZER_INDICES_SIZE] = {
     0, 5, 1,
     1, 5, 6,
     1, 6, 2,
+};
+
+unsigned int my_vx_voxel_indices[MY_VOXELIZER_INDICES_SIZE] = {
+	0, 1,
+    1, 2,
+	2, 3,
+	3, 0,
+	4, 5,
+	5, 6,
+	6, 7,
+	7, 4,
+	0, 4,
+	1, 5,
+	2, 6,
+	3, 7,
 };
 
 float vx_normals[18] = {
@@ -636,7 +652,7 @@ void vx__add_voxel(vx_mesh_t* mesh,
         mesh->vertices[index].y = vertices[i*3+1] + pos->y;
         mesh->vertices[index].z = vertices[i*3+2] + pos->z;
     }
-
+	/*
     int j = -1;
     for (size_t i = 0; i < VOXELIZER_INDICES_SIZE; ++i) {
         if (i % 6 == 0) {
@@ -650,6 +666,11 @@ void vx__add_voxel(vx_mesh_t* mesh,
     }
 
     mesh->nindices += VOXELIZER_INDICES_SIZE;
+	*/
+	for (size_t i = 0; i < MY_VOXELIZER_INDICES_SIZE; ++i) {
+        mesh->indices[i+mesh->nindices] = my_vx_voxel_indices[i] + mesh->nvertices;
+    }
+	mesh->nindices += MY_VOXELIZER_INDICES_SIZE;
     mesh->nvertices += 8;
 }
 
