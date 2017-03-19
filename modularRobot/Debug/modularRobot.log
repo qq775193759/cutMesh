@@ -1,76 +1,32 @@
-﻿生成启动时间为 2017/3/17 11:53:38。
+﻿生成启动时间为 2017/3/19 12:09:46。
      1>项目“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\modularRobot\modularRobot.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _USE_MATH_DEFINES /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "源.cpp"
-         源.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _USE_MATH_DEFINES /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt rotate.cpp
+         rotate.cpp
      1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.h(19): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\voxelizer.h(580): warning C4305: “=”: 从“int”到“float”截断
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\voxelizer.h(581): warning C4305: “=”: 从“int”到“float”截断
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\voxelizer.h(687): warning C4018: “<”: 有符号/无符号不匹配
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(50): warning C4305: “初始化”: 从“double”到“float”截断
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(51): warning C4305: “初始化”: 从“double”到“float”截断
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(80): warning C4018: “<”: 有符号/无符号不匹配
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(124): warning C4018: “<”: 有符号/无符号不匹配
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(207): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(219): warning C4305: “参数”: 从“double”到“float”截断
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(222): warning C4305: “参数”: 从“double”到“float”截断
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(225): warning C4305: “参数”: 从“double”到“float”截断
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(228): warning C4305: “参数”: 从“double”到“float”截断
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(231): warning C4305: “参数”: 从“double”到“float”截断
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(234): warning C4305: “参数”: 从“double”到“float”截断
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(255): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(263): warning C4305: “初始化”: 从“double”到“float”截断
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(270): warning C4305: “初始化”: 从“double”到“float”截断
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(277): warning C4244: “=”: 从“int”转换到“GLfloat”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(278): warning C4244: “=”: 从“int”转换到“GLfloat”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(294): warning C4244: “=”: 从“int”转换到“GLfloat”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(295): warning C4244: “=”: 从“int”转换到“GLfloat”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(21): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(22): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(23): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(25): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(26): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(27): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(28): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(29): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(59): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(67): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(84): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(85): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(115): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\geometry.h(111): warning C4715: “Vector3D::operator[]”: 不是所有的控件路径都返回值
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\cutMesh.exe" /INCREMENTAL /NOLOGO OpenMeshCored.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:libcmtd.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\cutMesh.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\cutMesh.lib" /MACHINE:X86 Debug\Geometry.obj
          Debug\LoadShaders.obj
          Debug\rotate.obj
          "Debug\源.obj"
-     1>OpenMeshCored.lib(BinaryHelper.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(BinaryHelper.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(IOManager.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(IOManager.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(OMFormat.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(OMFormat.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(BaseReader.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(BaseReader.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(OBJReader.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(OBJReader.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(OFFReader.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(OFFReader.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(OMReader.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(OMReader.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(PLYReader.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(PLYReader.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(STLReader.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(STLReader.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(BaseWriter.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(BaseWriter.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(OBJWriter.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(OBJWriter.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(OFFWriter.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(OFFWriter.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(OMWriter.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(OMWriter.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(PLYWriter.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(PLYWriter.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(STLWriter.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(STLWriter.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(ArrayKernel.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(ArrayKernel.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(PolyConnectivity.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(PolyConnectivity.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(TriConnectivity.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(TriConnectivity.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(omstream.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(omstream.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(BaseProperty.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(BaseProperty.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>OpenMeshCored.lib(Endian.obj) : warning LNK4099: 未找到 PDB“vc110.pdb”(使用“OpenMeshCored.lib(Endian.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc110.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>glew_static_vs2010_d.lib(glew.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“glew_static_vs2010_d.lib(glew.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_callbacks.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_callbacks.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_cursor.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_cursor.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_display.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_display.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_font.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_font.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_font_data.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_font_data.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_init.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_init.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_input_devices.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_input_devices.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_joystick.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_joystick.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_main.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_main.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_menu.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_menu.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_spaceball.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_spaceball.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_state.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_state.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_stroke_mono_roman.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_stroke_mono_roman.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_stroke_roman.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_stroke_roman.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_structure.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_structure.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_window.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_window.obj)”或在“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
          modularRobot.vcxproj -> C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\cutMesh.exe
      1>已完成生成项目“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\modularRobot\modularRobot.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:04.65
+已用时间 00:00:01.48

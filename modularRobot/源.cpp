@@ -30,6 +30,11 @@ GLfloat rotateMatrix[16]={  1.0, 0.0, 0.0, 0.0,
 							0.0, 1.0, 0.0, 0.0, 
 							0.0, 0.0, 1.0, 0.0, 
 							0.0, 0.0, 0.0, 1.0};
+GLfloat repeatMatrix[25]={};
+GLfloat inverseMatrix[9]={  1.0, 0.0, 0.0, 
+							0.0, 1.0, 0.0, 
+							0.0, 0.0, 1.0};
+float scale_size = 1;
 int projectSize = 2;
 GLfloat windowMatrix[16]={0.0};
 
@@ -70,6 +75,41 @@ void MyMesh2vx_mesh_t(MyMesh mesh, vx_mesh_t* &x)
 	}
 }
 
+void cal_inverseMatrix()
+{
+	/*
+	//cal repeatMatrix
+	for(int i=0;i<5;i++)
+		for(int j=0;j<5;j++)
+			repeatMatrix[i*5+j] = rotateMatrix[(i%3)*4+(j%3)];
+	//cal determinant 
+	GLfloat determinant = scale_size;
+	//cal inverseMatrix
+	for(int i=0;i<3;i++)
+		for(int j=0;j<3;j++)
+			inverseMatrix[j*3+i] = (repeatMatrix[(i+1)*5+(j+1)]*repeatMatrix[(i+2)*5+(j+2)] 
+								  - repeatMatrix[(i+1)*5+(j+2)]*repeatMatrix[(i+2)*5+(j+1)])/determinant;
+	*/
+	cout<<scale_size<<endl;
+	for(int i=0;i<3;i++)
+		for(int j=0;j<3;j++)
+			inverseMatrix[j*3+i] = rotateMatrix[(i%3)*4+(j%3)]/scale_size;
+}
+
+void cal_rotate_vertex_before(vx_vertex_t after)
+{
+	float x,y,z,rx,ry,rz;
+	x = after.x - rotateMatrix[12];
+	y = after.y - rotateMatrix[13];
+	z = after.z - rotateMatrix[14];
+	rx = inverseMatrix[0]*x + inverseMatrix[3]*y + inverseMatrix[6]*z;
+	ry = inverseMatrix[1]*x + inverseMatrix[4]*y + inverseMatrix[7]*z;
+	rz = inverseMatrix[2]*x + inverseMatrix[5]*y + inverseMatrix[8]*z;
+	voxel_triangle_v3.push_back(rx);
+	voxel_triangle_v3.push_back(ry);
+	voxel_triangle_v3.push_back(rz);
+}
+
 void voxelize_for_show()
 {
 	cout<<"Voxelize begin:"<<endl;
@@ -77,12 +117,9 @@ void voxelize_for_show()
 	voxel_mesh = vx_voxelize(rotate_mesh, voxel_size, voxel_size, voxel_size, voxel_precision);
 	cout<<"Voxelize end:"<<endl;
 	voxel_triangle_v3.clear();
+	cal_inverseMatrix();
 	for(int i=0;i<voxel_mesh->nindices;i++)
-	{
-		voxel_triangle_v3.push_back(voxel_mesh->vertices[voxel_mesh->indices[i]].x);
-		voxel_triangle_v3.push_back(voxel_mesh->vertices[voxel_mesh->indices[i]].y);
-		voxel_triangle_v3.push_back(voxel_mesh->vertices[voxel_mesh->indices[i]].z);
-	}
+		cal_rotate_vertex_before(voxel_mesh->vertices[voxel_mesh->indices[i]]);
 }
 
 void read_point()
@@ -122,7 +159,7 @@ vx_vertex_t cal_rotate_vertex(vx_vertex_t origin)
 void cal_rotate_mesh()
 {
 	for(int i=0;i<origin_mesh->nvertices;i++)
-		rotate_mesh->vertices[i] = cal_rotate_vertex(rotate_mesh->vertices[i]);
+		rotate_mesh->vertices[i] = cal_rotate_vertex(origin_mesh->vertices[i]);
 }
 
 void revoxelize()
