@@ -1,24 +1,30 @@
-﻿生成启动时间为 2017/3/19 12:09:46。
+﻿生成启动时间为 2017/3/20 9:50:35。
      1>项目“C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\modularRobot\modularRobot.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _USE_MATH_DEFINES /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt rotate.cpp
-         rotate.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _USE_MATH_DEFINES /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "源.cpp"
+         源.cpp
      1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.h(19): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(21): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(22): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(23): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(24): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(25): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(26): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(27): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(28): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(29): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(59): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(67): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(84): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(85): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\rotate.cpp(115): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
-     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\geometry.h(111): warning C4715: “Vector3D::operator[]”: 不是所有的控件路径都返回值
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\voxelizer.h(580): warning C4305: “=”: 从“int”到“float”截断
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\voxelizer.h(581): warning C4305: “=”: 从“int”到“float”截断
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\voxelizer.h(687): warning C4018: “<”: 有符号/无符号不匹配
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(55): warning C4305: “初始化”: 从“double”到“float”截断
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(56): warning C4305: “初始化”: 从“double”到“float”截断
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(114): warning C4018: “<”: 有符号/无符号不匹配
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(154): warning C4018: “<”: 有符号/无符号不匹配
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(237): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(249): warning C4305: “参数”: 从“double”到“float”截断
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(252): warning C4305: “参数”: 从“double”到“float”截断
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(255): warning C4305: “参数”: 从“double”到“float”截断
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(258): warning C4305: “参数”: 从“double”到“float”截断
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(261): warning C4305: “参数”: 从“double”到“float”截断
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(264): warning C4305: “参数”: 从“double”到“float”截断
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(285): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(293): warning C4305: “初始化”: 从“double”到“float”截断
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(300): warning C4305: “初始化”: 从“double”到“float”截断
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(307): warning C4244: “=”: 从“int”转换到“GLfloat”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(308): warning C4244: “=”: 从“int”转换到“GLfloat”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(324): warning C4244: “=”: 从“int”转换到“GLfloat”，可能丢失数据
+     1>c:\users\yezp\documents\visual studio 2012\projects\cutmesh\modularrobot\源.cpp(325): warning C4244: “=”: 从“int”转换到“GLfloat”，可能丢失数据
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\cutMesh.exe" /INCREMENTAL /NOLOGO OpenMeshCored.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:libcmtd.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\cutMesh.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\yezp\Documents\Visual Studio 2012\Projects\cutMesh\Debug\cutMesh.lib" /MACHINE:X86 Debug\Geometry.obj
          Debug\LoadShaders.obj
@@ -29,4 +35,4 @@
 
 生成成功。
 
-已用时间 00:00:01.48
+已用时间 00:00:04.50

@@ -77,19 +77,12 @@ void MyMesh2vx_mesh_t(MyMesh mesh, vx_mesh_t* &x)
 
 void cal_inverseMatrix()
 {
-	/*
-	//cal repeatMatrix
-	for(int i=0;i<5;i++)
-		for(int j=0;j<5;j++)
-			repeatMatrix[i*5+j] = rotateMatrix[(i%3)*4+(j%3)];
-	//cal determinant 
-	GLfloat determinant = scale_size;
-	//cal inverseMatrix
-	for(int i=0;i<3;i++)
-		for(int j=0;j<3;j++)
-			inverseMatrix[j*3+i] = (repeatMatrix[(i+1)*5+(j+1)]*repeatMatrix[(i+2)*5+(j+2)] 
-								  - repeatMatrix[(i+1)*5+(j+2)]*repeatMatrix[(i+2)*5+(j+1)])/determinant;
-	*/
+	scale_size = 0;
+	for(int j=0;j<3;j++)
+	{
+		scale_size += rotateMatrix[j%3]*rotateMatrix[j%3];
+	}
+	//scale_size = sqrt(scale_size);
 	cout<<scale_size<<endl;
 	for(int i=0;i<3;i++)
 		for(int j=0;j<3;j++)
