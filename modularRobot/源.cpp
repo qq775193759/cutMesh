@@ -234,6 +234,13 @@ void display(void)
 	{
 		glBindVertexArray(VAOs[Triangles]); 
 		glUniform1i(paintModeLoc, 0);
+		glColorMask(0,0,0,0);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		glPolygonOffset(1.1f, 4.0f);
+		glEnable(GL_POLYGON_OFFSET_FILL);
+		glDrawArrays(GL_TRIANGLES, 0, edges_v2.size()/3);
+		glDisable(GL_POLYGON_OFFSET_FILL);
+		glColorMask(1, 1, 1, 1);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glDrawArrays(GL_TRIANGLES, 0, edges_v2.size()/3);
 	}
@@ -244,7 +251,8 @@ void display(void)
 		//glDrawArrays(GL_QUADS, 0, voxel_triangle_v3.size());
 		glDrawArrays(GL_LINES, 0, voxel_triangle_v3.size()/3);
 	}
-	glFlush();
+	glutSwapBuffers();
+	glutPostRedisplay();
 }
 
 
