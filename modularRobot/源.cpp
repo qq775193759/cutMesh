@@ -46,6 +46,7 @@ const int VERT_DIM = 3;
 const int EDGE_DIM = 2;
 vector<GLfloat> edges_v2;
 vector<GLfloat> voxel_triangle_v3;
+bool edges_v2_show=1,voxel_triangle_v3_show=1;
 
 RotateController *rotCtl;
 
@@ -83,7 +84,6 @@ void cal_inverseMatrix()
 		scale_size += rotateMatrix[j%3]*rotateMatrix[j%3];
 	}
 	//scale_size = sqrt(scale_size);
-	cout<<scale_size<<endl;
 	for(int i=0;i<3;i++)
 		for(int j=0;j<3;j++)
 			inverseMatrix[j*3+i] = rotateMatrix[(i%3)*4+(j%3)]/scale_size;
@@ -111,6 +111,7 @@ void voxelize_for_show()
 	cout<<"Voxelize end:"<<endl;
 	voxel_triangle_v3.clear();
 	cal_inverseMatrix();
+	cout<< voxel_mesh->nindices <<endl;
 	for(int i=0;i<voxel_mesh->nindices;i++)
 		cal_rotate_vertex_before(voxel_mesh->vertices[voxel_mesh->indices[i]]);
 }
@@ -124,7 +125,7 @@ void read_point()
 		std::cerr << "Error loading mesh from file " << std::endl;
 		return;
 	}
-	for(auto e_it = mesh.halfedges_begin();e_it != mesh.halfedges_end();e_it++)
+	/*for(auto e_it = mesh.halfedges_begin();e_it != mesh.halfedges_end();e_it++)
 	{
 		GLfloat* tmp_point = mesh.point(mesh.from_vertex_handle(*e_it)).data();
 		edges_v2.push_back(tmp_point[0]);
@@ -134,6 +135,16 @@ void read_point()
 		edges_v2.push_back(tmp_point[0]);
 		edges_v2.push_back(tmp_point[1]);
 		edges_v2.push_back(tmp_point[2]);
+	}*/
+	for(auto f_it = mesh.faces_begin();f_it != mesh.faces_end();f_it++)
+	{
+		for(auto fv_it = mesh.fv_iter(*f_it);fv_it.is_valid();fv_it++)
+		{
+			GLfloat* tmp_point = mesh.point(*fv_it).data();
+			edges_v2.push_back(tmp_point[0]);
+			edges_v2.push_back(tmp_point[1]);
+			edges_v2.push_back(tmp_point[2]);
+		}
 	}
 	cout<<"In total, Edges: "<<edges_v2.size()/6<<endl;
 	MyMesh2vx_mesh_t(mesh, origin_mesh);
@@ -209,19 +220,30 @@ void init(void)
 	glLineWidth(1.0f);
 	
 	rotCtl = new RotateController(rotateMatrix);
+
+	//DEPTH TEST FOR HIDDEN
+	glEnable(GL_DEPTH_TEST);
 }
 //--------------------------------------------------------------------// // display //
 void display(void) 
 { 
 	//cout<<"display"<<endl;
 	glUniformMatrix4fv(rotateMatrixLoc, 1, GL_FALSE, rotateMatrix);
-	glClear(GL_COLOR_BUFFER_BIT);
-	glBindVertexArray(VAOs[Triangles]); 
-	glUniform1i(paintModeLoc, 0);
-	glDrawArrays(GL_LINES, 0, edges_v2.size());
-	glBindVertexArray(VAOs[Voxels]);
-	glUniform1i(paintModeLoc, 1);
-	glDrawArrays(GL_LINES, 0, voxel_triangle_v3.size());
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	if(edges_v2_show)
+	{
+		glBindVertexArray(VAOs[Triangles]); 
+		glUniform1i(paintModeLoc, 0);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glDrawArrays(GL_TRIANGLES, 0, edges_v2.size()/3);
+	}
+	if(voxel_triangle_v3_show)
+	{
+		glBindVertexArray(VAOs[Voxels]);
+		glUniform1i(paintModeLoc, 1);
+		//glDrawArrays(GL_QUADS, 0, voxel_triangle_v3.size());
+		glDrawArrays(GL_LINES, 0, voxel_triangle_v3.size()/3);
+	}
 	glFlush();
 }
 
@@ -244,6 +266,12 @@ void keyboardFunc(unsigned char key, int x, int y)
 	{
 	case ' ':
 		revoxelize();
+		break;
+	case '1':
+		edges_v2_show = 1 - edges_v2_show; 
+		break;
+	case '2':
+		voxel_triangle_v3_show = 1 - voxel_triangle_v3_show;
 		break;
 	case 'a':
 		rotCtl->doRot(Vector3D(1.0,0.0,0.0), 0.1);
