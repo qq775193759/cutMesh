@@ -47,6 +47,7 @@ const int EDGE_DIM = 2;
 vector<GLfloat> edges_v2;
 vector<GLfloat> voxel_triangle_v3;
 bool edges_v2_show=1,voxel_triangle_v3_show=1;
+const float DEPTHEPS = 0.001;
 
 RotateController *rotCtl;
 
@@ -236,12 +237,11 @@ void display(void)
 		glUniform1i(paintModeLoc, 0);
 		glColorMask(0,0,0,0);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-		glPolygonOffset(1.1f, 4.0f);
-		glEnable(GL_POLYGON_OFFSET_FILL);
+		glDepthRange(DEPTHEPS,1);
 		glDrawArrays(GL_TRIANGLES, 0, edges_v2.size()/3);
-		glDisable(GL_POLYGON_OFFSET_FILL);
 		glColorMask(1, 1, 1, 1);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glDepthRange(0,1 - DEPTHEPS);
 		glDrawArrays(GL_TRIANGLES, 0, edges_v2.size()/3);
 	}
 	if(voxel_triangle_v3_show)

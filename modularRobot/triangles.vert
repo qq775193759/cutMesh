@@ -12,4 +12,5 @@ main()
 		gl_Position = windowMatrix * rotateMatrix * vPosition ;
 	//else
 	//	gl_Position = windowMatrix * vPosition;
+	gl_Position.z =  - gl_Position.z;
 }
