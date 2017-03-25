@@ -46,7 +46,7 @@ const int VERT_DIM = 3;
 const int EDGE_DIM = 2;
 vector<GLfloat> edges_v2;
 vector<GLfloat> voxel_triangle_v3;
-bool edges_v2_show=1,voxel_triangle_v3_show=1;
+bool edges_v2_show=1,voxel_triangle_v3_show=1,voxel_triangle_v3_blanking=1;
 const float DEPTHEPS = 0.001;
 
 RotateController *rotCtl;
@@ -248,8 +248,17 @@ void display(void)
 	{
 		glBindVertexArray(VAOs[Voxels]);
 		glUniform1i(paintModeLoc, 1);
-		//glDrawArrays(GL_QUADS, 0, voxel_triangle_v3.size());
-		glDrawArrays(GL_LINES, 0, voxel_triangle_v3.size()/3);
+		if(voxel_triangle_v3_blanking)
+		{
+			glColorMask(0,0,0,0);
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+			glDepthRange(DEPTHEPS,1);
+			glDrawArrays(GL_QUADS, 0, voxel_triangle_v3.size()/3);
+		}
+		glColorMask(1, 1, 1, 1);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glDepthRange(0,1 - DEPTHEPS);
+		glDrawArrays(GL_QUADS, 0, voxel_triangle_v3.size()/3);
 	}
 	glutSwapBuffers();
 	glutPostRedisplay();
@@ -280,6 +289,9 @@ void keyboardFunc(unsigned char key, int x, int y)
 		break;
 	case '2':
 		voxel_triangle_v3_show = 1 - voxel_triangle_v3_show;
+		break;
+	case '3':
+		voxel_triangle_v3_blanking = 1 - voxel_triangle_v3_blanking;
 		break;
 	case 'a':
 		rotCtl->doRot(Vector3D(1.0,0.0,0.0), 0.1);
@@ -374,7 +386,8 @@ int main(int argc, char** argv)
 	glutInit(&argc, argv); 
 	glutInitDisplayMode(GLUT_RGBA); 
 	glutInitWindowSize(WINDOW_RANGE_X, WINDOW_RANGE_Y); 
-	glutInitContextVersion(4, 3); 
+	//glutInitContextVersion(4, 3); 
+	glutInitContextVersion(2, 0); 
 	glutInitContextProfile(GLUT_CORE_PROFILE); 
 	glutCreateWindow(argv[0]);
 	glewExperimental = GL_TRUE;
