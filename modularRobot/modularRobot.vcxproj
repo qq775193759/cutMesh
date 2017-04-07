@@ -79,12 +79,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="formatTrans.cpp" />
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="LoadShaders.cpp" />
     <ClCompile Include="rotate.cpp" />
     <ClCompile Include="源.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="formatTrans.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="rotate.h" />

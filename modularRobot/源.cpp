@@ -15,7 +15,7 @@ using namespace OpenMesh;
 typedef TriMesh_ArrayKernelT<>  MyMesh;
 
 #define VOXELIZER_IMPLEMENTATION
-#include "voxelizer.h"
+#include "formatTrans.h"
 
 
 enum VAO_IDs { Triangles, Voxels, NumVAOs };
@@ -218,7 +218,7 @@ void init(void)
 	//glUniformMatrix4fv(projectMatrixLoc, 1, GL_FALSE, projectMatrix);//no use
 
 	glPointSize(6.0f);
-	glLineWidth(1.0f);
+	glLineWidth(1.5f);
 	
 	rotCtl = new RotateController(rotateMatrix);
 
@@ -293,23 +293,9 @@ void keyboardFunc(unsigned char key, int x, int y)
 	case '3':
 		voxel_triangle_v3_blanking = 1 - voxel_triangle_v3_blanking;
 		break;
-	case 'a':
-		rotCtl->doRot(Vector3D(1.0,0.0,0.0), 0.1);
-		break;
-	case 'd':
-		rotCtl->doRot(Vector3D(0.0,1.0,0.0), 0.1);
-		break;
 	case 's':
-		rotCtl->doRot(Vector3D(0.0,0.0,1.0), 0.1);
-		break;
-	case 'q':
-		rotCtl->doRot(Vector3D(1.0,0.0,0.0), -0.1);
-		break;
-	case 'w':
-		rotCtl->doRot(Vector3D(0.0,1.0,0.0), -0.1);
-		break;
-	case 'e':
-		rotCtl->doRot(Vector3D(0.0,0.0,1.0), -0.1);
+		save_voxel("save.obj", voxel_mesh);
+		save_voxel_as_format("save_x.txt", "save_y.txt", "save_z.txt", voxel_mesh, voxel_size);
 		break;
 	}
 	glutPostRedisplay();
