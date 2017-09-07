@@ -1,4 +1,4 @@
-﻿生成启动时间为 2017/9/7 15:37:43。
+﻿生成启动时间为 2017/9/7 15:46:47。
      1>项目“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\modularRobot\modularRobot.vcxproj”在节点 2 上(Build 个目标)。
      1>Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\cutMesh.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:libcmtd.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\cutMesh.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\cutMesh.lib" /MACHINE:X86 Debug\formatTrans.obj
@@ -7,26 +7,9 @@
          Debug\mymesh.obj
          Debug\rotate.obj
          "Debug\源.obj"
-     1>glew_static_vs2010_d.lib(glew.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“glew_static_vs2010_d.lib(glew.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_callbacks.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_callbacks.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_cursor.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_cursor.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_display.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_display.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_font.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_font.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_font_data.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_font_data.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_init.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_init.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_input_devices.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_input_devices.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_joystick.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_joystick.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_main.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_main.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_menu.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_menu.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_spaceball.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_spaceball.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_state.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_state.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_stroke_mono_roman.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_stroke_mono_roman.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_stroke_roman.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_stroke_roman.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_structure.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_structure.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
-     1>freeglut_static_vs2010_d.lib(freeglut_window.obj) : warning LNK4099: 未找到 PDB“vc100.pdb”(使用“freeglut_static_vs2010_d.lib(freeglut_window.obj)”或在“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\vc100.pdb”中寻找)；正在链接对象，如同没有调试信息一样
          modularRobot.vcxproj -> C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\Debug\cutMesh.exe
      1>已完成生成项目“C:\Users\yezp13\Documents\Visual Studio 2012\Projects\cutMesh\modularRobot\modularRobot.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:01.77
+已用时间 00:00:01.38
