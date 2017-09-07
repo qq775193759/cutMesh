@@ -27,3 +27,6 @@ my_int3_t cal_point(vx_vertex_t p, float voxel_size);
 
 void save_voxel_as_format(const char* filename1, const char* filename2, const char* filename3,
 						  vx_mesh_t* result, float voxel_size);
+
+
+void trans_xyz_to_format(string name);

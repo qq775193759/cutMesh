@@ -7,12 +7,7 @@ using namespace std;
 #include "rotate.h"
 #include<GL/glut.h>
 
-// -------------------- OpenMesh
-#include <OpenMesh/Core/IO/MeshIO.hh>
-#include <OpenMesh/Core/Mesh/TriMesh_ArrayKernelT.hh>
-#include <OpenMesh/Tools/Utils/getopt.h>
-using namespace OpenMesh;
-typedef TriMesh_ArrayKernelT<>  MyMesh;
+#include"mymesh.h"
 
 #define VOXELIZER_IMPLEMENTATION
 #include "formatTrans.h"
@@ -57,7 +52,7 @@ vx_mesh_t* voxel_mesh;
 float voxel_size = 0.1;
 float voxel_precision = 0.01;
 
-void MyMesh2vx_mesh_t(MyMesh mesh, vx_mesh_t* &x)
+/*void MyMesh2vx_mesh_t(MyMesh mesh, vx_mesh_t* &x)
 {
 	x = vx_mesh_alloc(mesh.n_vertices(), 3*mesh.n_faces());
 	int f_no = 0;
@@ -75,6 +70,25 @@ void MyMesh2vx_mesh_t(MyMesh mesh, vx_mesh_t* &x)
 			f_no++;
 		}
 	}
+}*/
+
+void MyMesh2vx_mesh_t(mymesh mesh, vx_mesh_t* &x)
+{
+	int v_size = mesh.x.size(), f_size = mesh.tri[0].size();
+	x = vx_mesh_alloc(v_size, 3*f_size);
+	int f_no = 0;
+	for(int i=0;i<v_size;i++)
+	{
+		x->vertices[i].x=mesh.x[i];
+		x->vertices[i].y=mesh.y[i];
+		x->vertices[i].z=mesh.z[i];
+	}
+	for(int i=0;i<f_size;i++)
+		for(int j=0;j<3;j++)
+		{
+			x->indices[f_no] = mesh.tri[j][i];
+			f_no++;
+		}
 }
 
 void cal_inverseMatrix()
@@ -112,44 +126,31 @@ void voxelize_for_show()
 	cout<<"Voxelize end:"<<endl;
 	voxel_triangle_v3.clear();
 	cal_inverseMatrix();
-	cout<< voxel_mesh->nindices <<endl;
+	cout<< voxel_mesh->nindices/24 <<endl;
 	for(int i=0;i<voxel_mesh->nindices;i++)
 		cal_rotate_vertex_before(voxel_mesh->vertices[voxel_mesh->indices[i]]);
 }
 
 void read_point()
 {
-	MyMesh  mesh;
-	IO::Options ropt, wopt;
-	if ( ! IO::read_mesh(mesh,"bunny.obj", ropt))
-	{
-		std::cerr << "Error loading mesh from file " << std::endl;
-		return;
-	}
-	/*for(auto e_it = mesh.halfedges_begin();e_it != mesh.halfedges_end();e_it++)
-	{
-		GLfloat* tmp_point = mesh.point(mesh.from_vertex_handle(*e_it)).data();
-		edges_v2.push_back(tmp_point[0]);
-		edges_v2.push_back(tmp_point[1]);
-		edges_v2.push_back(tmp_point[2]);
-		tmp_point = mesh.point(mesh.to_vertex_handle(*e_it)).data();
-		edges_v2.push_back(tmp_point[0]);
-		edges_v2.push_back(tmp_point[1]);
-		edges_v2.push_back(tmp_point[2]);
-	}*/
-	for(auto f_it = mesh.faces_begin();f_it != mesh.faces_end();f_it++)
-	{
-		for(auto fv_it = mesh.fv_iter(*f_it);fv_it.is_valid();fv_it++)
+	string meshname;
+	ifstream fin("config.txt");
+	fin>>meshname;
+	cout<<meshname<<endl;
+	mymesh testmesh(meshname);
+	fin.close();
+	
+	for(int i=0;i<testmesh.tri[0].size();i++)
+		for(int j=0;j<3;j++)
 		{
-			GLfloat* tmp_point = mesh.point(*fv_it).data();
-			edges_v2.push_back(tmp_point[0]);
-			edges_v2.push_back(tmp_point[1]);
-			edges_v2.push_back(tmp_point[2]);
+			int tmp_rank = testmesh.tri[j][i];
+			edges_v2.push_back(testmesh.x[tmp_rank]);
+			edges_v2.push_back(testmesh.y[tmp_rank]);
+			edges_v2.push_back(testmesh.z[tmp_rank]);
 		}
-	}
 	cout<<"In total, Edges: "<<edges_v2.size()/6<<endl;
-	MyMesh2vx_mesh_t(mesh, origin_mesh);
-	MyMesh2vx_mesh_t(mesh, rotate_mesh);
+	MyMesh2vx_mesh_t(testmesh, origin_mesh);
+	MyMesh2vx_mesh_t(testmesh, rotate_mesh);
 	voxelize_for_show();
 }
 
@@ -218,7 +219,7 @@ void init(void)
 	//glUniformMatrix4fv(projectMatrixLoc, 1, GL_FALSE, projectMatrix);//no use
 
 	glPointSize(6.0f);
-	glLineWidth(1.5f);
+	glLineWidth(1.0f);
 	
 	rotCtl = new RotateController(rotateMatrix);
 
@@ -368,7 +369,16 @@ void motionFunc(int x, int y)
 
 int main(int argc, char** argv) 
 { 
-	cout<<"ok"<<endl;
+	//trans begin
+	/*trans_xyz_to_format("bunny");
+    trans_xyz_to_format("table");
+    trans_xyz_to_format("teddy");
+    trans_xyz_to_format("eight");
+    trans_xyz_to_format("chair");
+    trans_xyz_to_format("cup");*/
+	//trans end
+
+	cout<<"OK"<<endl;
 	glutInit(&argc, argv); 
 	glutInitDisplayMode(GLUT_RGBA); 
 	glutInitWindowSize(WINDOW_RANGE_X, WINDOW_RANGE_Y); 

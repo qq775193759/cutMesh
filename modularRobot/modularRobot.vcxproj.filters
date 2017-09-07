@@ -30,6 +30,9 @@
     <ClCompile Include="formatTrans.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="mymesh.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Geometry.h">
@@ -45,6 +48,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="formatTrans.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mymesh.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

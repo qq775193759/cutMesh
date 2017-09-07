@@ -1,4 +1,5 @@
 #include "formatTrans.h"
+#include <string>
 
 void save_voxel(const char* filename, vx_mesh_t* result)
 {
@@ -105,4 +106,102 @@ void save_voxel_as_format(const char* filename1, const char* filename2, const ch
 		}
 	}
 	fout.close();
+}
+
+my_int3_t cal_point(float px, float py, float pz)
+{
+	my_int3_t res;
+	float voxel_size = 20.5;
+	res.x = floor(px/voxel_size + 0.1);
+	res.y = floor(py/voxel_size + 0.1);
+	res.z = floor(pz/voxel_size + 0.1);
+	return res;
+}
+
+void trans_xyz_to_format(const string filename1, const string filename2, const string filename3,
+						  const string xyzname)
+{
+	vector<my_int3_t> int3_vec;
+	my_int3_t max_int3(-1000),min_int3(1000),size_int3;
+	ifstream fin(xyzname);
+	float px,py,pz;
+	while(fin>>px)
+	{
+		fin>>py>>pz;
+		my_int3_t tmp_int3 = cal_point(px,py,pz);
+		int3_vec.push_back(tmp_int3);
+		for(int i=0;i<3;i++)
+		{
+			max_int3.v[i] = max(tmp_int3.v[i], max_int3.v[i]);
+			min_int3.v[i] = min(tmp_int3.v[i], min_int3.v[i]);
+		}
+	}
+	fin.close();
+
+	const int EDGE_SIZE = 1;
+	for(int i=0;i<3;i++)
+		size_int3.v[i] = max_int3.v[i] - min_int3.v[i] + 1 + 2*EDGE_SIZE;
+	for(int i=0;i<3;i++)
+		cout<<max_int3.v[i]<<" "<<min_int3.v[i]<<endl;
+	vector<int> res_vec(size_int3.v[0]*size_int3.v[1]*size_int3.v[2], -1);
+
+	for(int i=0;i<int3_vec.size();i++)
+	{
+		int tmp_v[3];
+		for(int j=0;j<3;j++)
+			tmp_v[j] = int3_vec[i].v[j] - min_int3.v[j] + EDGE_SIZE;
+		int tmp_rank = size_int3.v[2]*(size_int3.v[1]*tmp_v[0] + tmp_v[1]) + tmp_v[2];
+		res_vec[tmp_rank] = 1;
+	}
+
+	ofstream fout;
+	fout.open(filename1);
+	for(int i=0;i<size_int3.v[0];i++)
+	{
+		fout<<"level "<<i<<endl;
+		for(int j=0;j<size_int3.v[1];j++)
+		{
+			for(int k=0;k<size_int3.v[2];k++)
+			{
+				fout<<res_vec[size_int3.v[2]*(size_int3.v[1]*i+j)+k]<<'\t';
+			}
+			fout<<endl;
+		}
+	}
+	fout.close();
+
+	fout.open(filename2);
+	for(int j=0;j<size_int3.v[1];j++)
+	{
+		fout<<"level "<<j<<endl;
+		for(int k=0;k<size_int3.v[2];k++)
+		{
+			for(int i=0;i<size_int3.v[0];i++)
+			{
+				fout<<res_vec[size_int3.v[2]*(size_int3.v[1]*i+j)+k]<<'\t';
+			}
+			fout<<endl;
+		}
+	}
+	fout.close();
+
+	fout.open(filename3);
+	for(int k=0;k<size_int3.v[2];k++)
+	{
+		fout<<"level "<<k<<endl;
+		for(int i=0;i<size_int3.v[0];i++)
+		{
+			for(int j=0;j<size_int3.v[1];j++)
+			{
+				fout<<res_vec[size_int3.v[2]*(size_int3.v[1]*i+j)+k]<<'\t';
+			}
+			fout<<endl;
+		}
+	}
+	fout.close();
+}
+
+void trans_xyz_to_format(string name)
+{
+	trans_xyz_to_format("xyz/"+name+"_x.txt", "xyz/"+name+"_y.txt", "xyz/"+name+"_z.txt", "xyz/"+name+".xyz");
 }

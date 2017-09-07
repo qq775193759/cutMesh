@@ -58,7 +58,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>libcmtd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <AdditionalDependencies>OpenMeshCored.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -82,12 +82,14 @@
     <ClCompile Include="formatTrans.cpp" />
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="LoadShaders.cpp" />
+    <ClCompile Include="mymesh.cpp" />
     <ClCompile Include="rotate.cpp" />
     <ClCompile Include="源.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="formatTrans.h" />
     <ClInclude Include="Geometry.h" />
+    <ClInclude Include="mymesh.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="rotate.h" />
     <ClInclude Include="voxelizer.h" />
