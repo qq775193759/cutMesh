@@ -294,6 +294,9 @@ void keyboardFunc(unsigned char key, int x, int y)
 	case '3':
 		voxel_triangle_v3_blanking = 1 - voxel_triangle_v3_blanking;
 		break;
+	case 'r':
+		rotCtl->recoverRot();
+		break;
 	case 's':
 		save_voxel("save.obj", voxel_mesh);
 		save_voxel_as_format("save_x.txt", "save_y.txt", "save_z.txt", voxel_mesh, voxel_size);

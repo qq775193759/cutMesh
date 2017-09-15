@@ -21,6 +21,7 @@ public:
 	void MouseMoveRotate(Vector2D v2d);
 	void MousePress(Vector2D v2d);
 	void doRot(Vector3D axis, float angle);
+	void recoverRot();
 	//scale
 	void scale(float scaleFactor, Vector2D v2d);
 	//shift

@@ -1,6 +1,7 @@
 #include "rotate.h"
 #include <cmath>
-#include <istream>
+#include <iostream>
+using namespace std;
 
 
 RotateController::RotateController(float* M)
@@ -57,6 +58,25 @@ void RotateController::doRot(Vector3D axis, float angle)
 	multiply(externM, m, externM);
 	for (int i = 0; i < 3; ++i)
 		externM[12 + i] = shift[i];
+}
+
+void RotateController::recoverRot()
+{
+	float tmp_factor = 0;
+	for(int i=0;i<3;i++)
+	{
+		tmp_factor += externM[i]*externM[i];
+	}
+	tmp_factor=sqrt(tmp_factor);
+	for (int i = 0; i < 15; ++i)
+	{
+		externM[i] = 0.0;
+	}
+	for (int i = 0; i < 3; ++i)
+	{
+		externM[5*i] = tmp_factor;
+	}
+	externM[15]=1.0;
 }
 
 Vector3D RotateController::mapToSphere(Vector2D v2d)
