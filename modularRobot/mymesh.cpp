@@ -1,4 +1,5 @@
 #include "mymesh.h"
+#include <cmath>
 
 
 mymesh::mymesh(string filename)
@@ -74,8 +75,31 @@ mymesh::mymesh(string filename)
 		fin.close();
 		cout<<"obj file"<<endl;
 	}
+	if(x[0]>1 || x[0]<-1)
+		normalize();
 	cout<<"v size:"<<x.size()<<endl;
 	cout<<"f size:"<<tri[0].size()<<endl;
 }
 
 
+void mymesh::normalize()
+{
+	max_x = max_y = max_z = -10000;
+	min_x = min_y = min_z = 10000;
+	for(int i=0;i<x.size();i++)
+	{
+		max_x = max(x[i], max_x);
+		max_y = max(y[i], max_y);
+		max_z = max(z[i], max_z);
+		min_x = min(x[i], min_x);
+		min_y = min(y[i], min_y);
+		min_z = min(z[i], min_z);
+	}
+	double scale = max_x-min_x;
+	for(int i=0;i<x.size();i++)
+	{
+		x[i] = (x[i]-(min_x+max_x)/2)/scale;
+		y[i] = (y[i]-(min_y+max_y)/2)/scale;
+		z[i] = (z[i]-(min_z+max_z)/2)/scale;
+	}
+}

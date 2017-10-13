@@ -1,1 +1,1 @@
-bunny.obj
+rabbit.obj
