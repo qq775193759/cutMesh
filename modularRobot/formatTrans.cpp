@@ -2,6 +2,7 @@
 #include <string>
 
 void save_voxel(const char* filename, vx_mesh_t* result)
+	//not use it to save
 {
 	ofstream file(filename);
 	for (int j = 0; j < result->nvertices; ++j) 
@@ -20,6 +21,38 @@ void save_voxel(const char* filename, vx_mesh_t* result)
 	file.close();
 }
 
+void save_voxel(const char* filename, vector<int> hollow_vec, my_int3_t size_int3)
+{
+	const int dx[8] = {0, 1, 1, 0, 0, 1, 1, 0};
+	const int dy[8] = {0, 0, 1, 1, 0, 0, 1, 1};
+	const int dz[8] = {0, 0, 0, 0, 1, 1, 1, 1};
+	const int face[6][4] = {1, 2, 3, 4, 
+							5, 6, 7, 8, 
+							1, 5, 8, 4, 
+							2, 6, 7, 3, 
+							1, 2, 6, 5, 
+							4, 3, 7, 8};
+	ofstream file(filename);
+	int cube_co = 0;
+	for(int i=0;i<size_int3.v[0];i++)
+		for(int j=0;j<size_int3.v[1];j++)
+			for(int k=0;k<size_int3.v[2];k++)
+				if(hollow_vec[size_int3.v[2]*(size_int3.v[1]*i+j)+k] == 1)
+				{
+					for(int vco=0;vco<8;vco++)
+						file << "v "<< i + dx[vco] << " "<< j + dy[vco] << " "<< k + dz[vco] << "\n";
+					for(int fco=0;fco<6;fco++)
+					{
+						file << "f ";
+						for(int vco=0;vco<4;vco++)
+							file<< cube_co + face[fco][vco] << " ";
+						file<< "\n";
+					}
+					cube_co+=8;
+				}
+	file.close();
+}
+
 my_int3_t cal_point(vx_vertex_t p, float voxel_size)
 {
 	my_int3_t res;
@@ -29,7 +62,74 @@ my_int3_t cal_point(vx_vertex_t p, float voxel_size)
 	return res;
 }
 
-void save_voxel_as_format(const char* filename1, const char* filename2, const char* filename3, 
+vector<int> fix_surround(vector<int> hollow_vec, my_int3_t size_int3)
+{
+	for(int i=0;i<size_int3.v[0];i++)
+		for(int j=0;j<size_int3.v[1];j++)
+			for(int k=0;k<size_int3.v[2];k++)
+				if((i*(size_int3.v[0]-i-1)*j*(size_int3.v[1]-j-1)*k*(size_int3.v[2]-k-1)) == 0)
+					hollow_vec[size_int3.v[2]*(size_int3.v[1]*i+j)+k] = 2;
+	return hollow_vec;
+}
+
+vector<int> fix_over(vector<int> hollow_vec, my_int3_t size_int3)
+{
+	for(int i=0;i<size_int3.v[0];i++)
+		for(int j=0;j<size_int3.v[1];j++)
+			for(int k=0;k<size_int3.v[2];k++)
+				if(hollow_vec[size_int3.v[2]*(size_int3.v[1]*i+j)+k] == -1)
+					hollow_vec[size_int3.v[2]*(size_int3.v[1]*i+j)+k] = 1;
+				else if(hollow_vec[size_int3.v[2]*(size_int3.v[1]*i+j)+k] == 2)
+					hollow_vec[size_int3.v[2]*(size_int3.v[1]*i+j)+k] = -1;
+	return hollow_vec;
+}
+
+vector<int> fix_3d(vector<int> hollow_vec, my_int3_t size_int3, int type)
+{
+	hollow_vec = fix_surround(hollow_vec, size_int3);
+	const int dx[12] = {1, -1, 0, 0, 0, 0, 1, -1, 0, 0, 0, 0};
+	const int dy[12] = {0, 0, 1, -1, 0, 0, 0, 0, 1, -1, 0, 0};
+	const int dz[12] = {0, 0, 0, 0, 1, -1, 0, 0, 0, 0, 1, -1};
+	int dr_st[4] = {0, 2, 4, 0};
+	int dr_en[4] = {4, 6, 8, 6};
+	int solid_co;
+	do{
+		solid_co = 0;
+		for(int i=1;i<(size_int3.v[0]-1);i++)
+			for(int j=1;j<(size_int3.v[1]-1);j++)
+				for(int k=1;k<(size_int3.v[2]-1);k++)
+					if(hollow_vec[size_int3.v[2]*(size_int3.v[1]*i+j)+k] == -1)
+						for(int dr=dr_st[type];dr<dr_en[type];dr++)
+							if(hollow_vec[size_int3.v[2]*(size_int3.v[1]*(i+dx[dr])+(j+dy[dr]))+(k+dz[dr])] == 2)
+							{
+								hollow_vec[size_int3.v[2]*(size_int3.v[1]*i+j)+k] = 2;
+								solid_co++;
+								break;
+							}
+		cout<<solid_co<<" ";
+	}while(solid_co != 0);
+	hollow_vec = fix_over(hollow_vec, size_int3);
+	return hollow_vec;
+}
+
+
+vector<int> get_solid(vector<int> hollow_vec, my_int3_t size_int3)
+{
+	for(int i=0;i<4;i++)
+		hollow_vec = fix_3d(hollow_vec, size_int3, i);
+	int solid_co = 0;
+	for(int i=0;i<size_int3.v[0];i++)
+		for(int j=0;j<size_int3.v[1];j++)
+			for(int k=0;k<size_int3.v[2];k++)
+			{
+				if(hollow_vec[size_int3.v[2]*(size_int3.v[1]*i+j)+k] == 1)
+					solid_co++;
+			}
+	cout<<"solid voxels: "<<solid_co<<endl;
+	return hollow_vec;
+}
+
+void save_voxel_as_format(const char* filename1, const char* filename2, const char* filename3, const char* filename, 
 						  vx_mesh_t* result, float voxel_size)
 {
 	vector<my_int3_t> int3_vec;
@@ -60,6 +160,9 @@ void save_voxel_as_format(const char* filename1, const char* filename2, const ch
 		int tmp_rank = size_int3.v[2]*(size_int3.v[1]*tmp_v[0] + tmp_v[1]) + tmp_v[2];
 		res_vec[tmp_rank] = 1;
 	}
+
+	res_vec = get_solid(res_vec, size_int3);
+	save_voxel(filename, res_vec, size_int3);
 
 	ofstream fout;
 	fout.open(filename1);

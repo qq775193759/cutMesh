@@ -25,7 +25,7 @@ typedef struct my_int3{
 
 my_int3_t cal_point(vx_vertex_t p, float voxel_size);
 
-void save_voxel_as_format(const char* filename1, const char* filename2, const char* filename3,
+void save_voxel_as_format(const char* filename1, const char* filename2, const char* filename3, const char* filename, 
 						  vx_mesh_t* result, float voxel_size);
 
 

@@ -126,7 +126,7 @@ void voxelize_for_show()
 	cout<<"Voxelize end:"<<endl;
 	voxel_triangle_v3.clear();
 	cal_inverseMatrix();
-	cout<< voxel_mesh->nindices/24 <<endl;
+	cout<< voxel_mesh->nvertices/8 <<endl;
 	for(int i=0;i<voxel_mesh->nindices;i++)
 		cal_rotate_vertex_before(voxel_mesh->vertices[voxel_mesh->indices[i]]);
 }
@@ -298,8 +298,8 @@ void keyboardFunc(unsigned char key, int x, int y)
 		rotCtl->recoverRot();
 		break;
 	case 's':
-		save_voxel("save.obj", voxel_mesh);
-		save_voxel_as_format("save_x.txt", "save_y.txt", "save_z.txt", voxel_mesh, voxel_size);
+		//save_voxel("save.obj", voxel_mesh);
+		save_voxel_as_format("save_x.txt", "save_y.txt", "save_z.txt", "save.obj", voxel_mesh, voxel_size);
 		break;
 	}
 	glutPostRedisplay();
